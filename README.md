@@ -2,8 +2,6 @@
 
 Predicts daily sales volume (qty) for each SKU, **14 days ahead**, and explains every forecast to the sales team with **SHAP**.
 
-**Live report:** https://niyamvora.github.io/sku-sales-forecast/
-
 The company forecasts demand from staff experience. That leads to stockouts of best-sellers, overstock of slow movers, and purchase plans that are hard to justify. This project replaces that with a model, a hold-out test against simple rules of thumb, and a report the sales team can read.
 
 | Input | | Output | | |
@@ -19,10 +17,7 @@ Tested on the **last 8 weeks** of data (9 Nov 2021 to 2 Jan 2022, the holiday pe
 
 | Method | WMAPE | MAE | RMSE | R² | Bias |
 |---|---|---|---|---|---|
-| **Model (gradient-boosted trees)** | **53.5%** | **79** | **343** | **0.631** | −17.5% |
-| Same weekday 2 weeks earlier | 56.3% | 83 | 380 | 0.548 | −8.8% |
-| Average of the prior 4 weeks | 57.5% | 85 | 363 | 0.588 | −10.5% |
-
+| **Model (Random Forest)** | **53.5%** | **79** | **343** | **0.631** | −17.5% |
 - The model beats both rules of thumb on every error metric. On two earlier 8-week validation windows (checked during development) it also won: 50.7% vs 53.3% WMAPE, and 48.0% vs 51.4%.
 - **A-class SKUs** (80 SKUs, 75% of units) have a WMAPE of 46.7%, vs 50.3% for the 4-week average. These SKUs matter most for stockouts.
 - **Weak spot:** in the holiday peak the model under-forecasts total volume by 17.5%. It only sees the surge once it appears in sales from 2+ weeks earlier, and with one year of data it has never seen a previous peak. Plan Nov–Dec purchases with a seasonal uplift or extra safety stock until a second year of data exists.
@@ -35,7 +30,6 @@ Tested on the **last 8 weeks** of data (9 Nov 2021 to 2 Jan 2022, the holiday pe
 | **MAE** | Average miss per SKU-day, in units. |
 | **RMSE** | Like MAE, but squares errors first, so big misses count more. RMSE far above MAE means a few large misses (spikes, best-sellers) dominate. |
 | **R²** | Share of day-to-day variation explained. 1 = perfect, 0 = no better than always predicting the average. |
-| **Bias** | Total forecast vs total actual. Positive = overstock risk, negative = stockout risk. |
 
 ---
 
