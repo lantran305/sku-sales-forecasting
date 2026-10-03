@@ -1,0 +1,12 @@
+numpy 
+pandas
+matplotlib
+seaborn
+holidays
+scikit-learn
+xgboost
+shap
+dvc
+ipywidgets
+optuna
+lightgbm
