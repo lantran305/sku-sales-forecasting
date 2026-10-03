@@ -88,7 +88,6 @@ To update the live report, run the script, then commit and push `index.html`.
 
 ## Project structure
 
-```
 
 
 ## Limitations and next steps
