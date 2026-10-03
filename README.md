@@ -76,16 +76,6 @@ The report has two views:
 
 ---
 
-## Run it
-
-Requires Python 3.10–3.12. `shap` does not support 3.14 yet.
-
-```bash
-python3 -m venv .venv
-.venv/bin/pip install -r requirements.txt
-.venv/bin/python forecast.py
-```
-
 It takes about 20 seconds. It prints the metrics table and writes:
 
 | File | What |
@@ -99,13 +89,7 @@ To update the live report, run the script, then commit and push `index.html`.
 ## Project structure
 
 ```
-data/sales.csv          raw sales data
-forecast.py             pipeline: load, features, leakage check, model, metrics, SHAP, report
-report_template.html    report layout (plain HTML/SVG/JS, no external libraries)
-index.html              generated report (GitHub Pages)
-outputs/                generated forecasts
-requirements.txt        pinned Python dependencies
-```
+
 
 ## Limitations and next steps
 
